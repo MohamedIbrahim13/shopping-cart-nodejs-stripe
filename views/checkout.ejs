@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <title>Checkout</title>
+    <link rel='stylesheet' href='/stylesheets/style.css' />
+  </head>
+  <body>
+    <% include partials/nav.ejs %>
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
+    <div class="container">
+      <div class="py-3 text-danger">
+        Total Price : $<%= totalPrice %>
+      </div>
+      <div class="row">
+        <div class="col-md-8 order-md-1">
+          <h4 class="mb-3">Billing address</h4>
+          <form class="needs-validation" method="POST" id="checkout" action="/checkout" novalidate>
+            <div class="row">
+              <div class="col-md-6 mb-3">
+                <label for="firstName">First name</label>
+                <input type="text" class="form-control" id="firstName" placeholder="" value="" name="firstName" required>
+                <div class="invalid-feedback">Valid first name is required.</div>
+              </div>
+              <div class="col-md-6 mb-3">
+                <label for="lastName">Last name</label>
+                <input type="text" class="form-control" id="lastName" placeholder="" value="" name="lastName" required>
+                <div class="invalid-feedback">Valid last name is required.</div>
+              </div>
+            </div>
+
+            <div class="mb-3">
+              <label for="email">Email</label>
+              <input type="email" class="form-control" id="email" placeholder="you@example.com" name="email" required>
+              <div class="invalid-feedback">Please enter a valid email address for shipping updates.</div>
+            </div>
+            <div class="mb-3">
+              <label for="address">Address</label>
+              <input type="text" class="form-control" id="address" placeholder="1234 Main St" name="address" required>
+              <div class="invalid-feedback">Please enter your shipping address.</div>
+            </div>
+
+            <hr class="mb-4"/>
+            <h4 class="mb-3">Payment</h4>
+            <div class="alert alert-danger" id="payment-errors"></div>
+            <div class="row">
+              <div class="col-md-6 mb-3">
+                <label for="ccname">Name on card</label>
+                <input type="text" class="form-control" id="ccname" placeholder=""  name="ccname" required>
+                <small class="text-muted">Full name as displayed on card</small>
+                <div class="invalid-feedback">Name on card is required</div>
+              </div>
+              <div class="col-md-6 mb-3">
+                <label for="ccnumber">Credit card number</label>
+                <input type="text" class="form-control" id="ccnumber" placeholder="" name="ccnumber" required>
+                <div class="invalid-feedback">Credit card number is required</div>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-md-3 mb-3">
+                <label for="ccexpirationMonth">Expiration Month</label>
+                <input type="text" class="form-control" id="ccexpirationMonth" placeholder="" name="ccexpirationMonth" required>
+                <div class="invalid-feedback">Expiration date required</div>
+              </div>
+              <div class="col-md-3 mb-3">
+                <label for="ccexpirationYear">Expiration Year</label>
+                <input type="text" class="form-control" id="ccexpirationYear" placeholder="" name="ccexpirationYear" required>
+                <div class="invalid-feedback">Expiration date required</div>
+              </div>
+              <div class="col-md-3 mb-3">
+                <label for="cccvv">CVV</label>
+                <input type="text" class="form-control" id="cccvv" placeholder="" name="cccvv" required>
+                <div class="invalid-feedback">Security code required</div>
+              </div>
+            </div>
+            <hr class="mb-4"/>
+            <button class="btn btn-success btn-lg btn-block" type="submit">Buy Now</button>
+          </form>
+        </div>
+      </div>
+      <% include partials/footer.ejs %>
+    </div>
+    <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+    <!-- <script type="text/javascript" src="https://js.stripe.com/v2/"></script> -->
+    <script src="https://js.stripe.com/v2/"></script>
+    <script src="https://js.stripe.com/v3/"></script>
+    <script type="text/javascript" src="../public/javascripts/checkout.js"></script>
+    
+  </body>
+</html>

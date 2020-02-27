@@ -1,0 +1,25 @@
+<nav class="navbar navbar-dark navbar-expand mb-2 sticky-top bg-primary">
+    <div class="container">
+        <a href="/" class="navbar-brand">
+            Shopping App
+          </a>
+          <div class="navbar-nav ml-auto">
+              <a href="/your-cart-info" class="nav-item nav-link text-white"><i class="material-icons">shopping_cart</i> Your Cart <span class="badge badge-success badge-pill"><%= totalQty %></span></a>
+              <div class="dropdown">
+                  <a href="#" class="nav-item nav-link text-white dropdown-toggle" aria-haspopup="true" aria-expanded="false" data-toggle="dropdown" id="Home"><i class="material-icons">person</i> User Mangement</a>
+                  <div class="dropdown-menu" aria-labelledby="Home">
+                        <% if (user) { %>
+                        <a href="/profile" class="dropdown-item">Profile</a>
+                        <div class="dropdown-divider"></div>
+                        <a href="/logout" class="dropdown-item">LogOut</a>
+                        <% } else { %>
+                        <a href="/login" class="dropdown-item">Login</a>
+                        <div class="dropdown-divider"></div>
+                        <a href="/signup" class="dropdown-item">Sign Up</a>
+                        <% } %>
+                      
+                  </div>
+              </div>
+          </div>
+    </div>
+</nav>
